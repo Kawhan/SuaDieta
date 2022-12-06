@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'partials/_menu.html' %}
+
+<link rel="stylesheet" href="{% static 'css/mycss/global.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mycss/view.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mycss/home.css' %}" />
+
+
+<div class="text text-align">
+    <h2 style="
+        color:var(--color-primary);">
+        Nome da dieta: {{ dieta.nome_dieta }}</h2>
+    <p class="kcal kcal-view">Dias da semana: {{ dieta.dias_semana }}</p>
+
+    <p class="kcal kcal-view">Gramas: {{ dieta.carbo }} gramas</p>
+    <p class="kcal kcal-view">Calorias: {{ dieta.calorias }} kcal</p>
+</div>
+
+<a class="button-background-green dialog-button-specific" href="{% url 'minhas_receitas' %}">Sair</a>
+
+
+
+
+{% endblock %}

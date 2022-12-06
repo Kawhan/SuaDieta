@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load socialaccount %}
+<!-- Preloader -->
+
+{% include 'partials/_alerts.html' %}
+
+<!-- ##### Contact Form Area Start ##### -->
+
+<link rel="stylesheet" href="{% static 'css/mycss/login.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mycss/global.css' %}" />
+
+<header>
+    <nav class="nav-menu">
+        <img class="logo" src="{% static 'images/logo-menu-login.svg' %}"></img>
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a class="text-menu" href="{% url 'index' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="text-menu" href="{% url 'minhas_receitas'%}">Minhas Dietas</a></li>
+            <li><a class="text-menu" href="{% url 'logout' %}">Sair</a></li>
+            {% endif %}
+
+            {% if not user.is_authenticated %}
+            <li><a class="text-menu" href="{% url 'minhas_receitas'%}">Minhas Dietas</a></li>
+            <li><a class="text-menu" href="{% url 'login' %}">Fazer Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+
+<div class="contact-area section-padding-0-80">
+    <div class="container">
+        <div class="panel-login">
+
+            <div class="text">
+                <h1>Controle sua dieta e<br>alcançe os melhores resultado</h1>
+                <p>Bem-vindo(a) novamente. Por favor, faça login na sua conta.</p>
+            </div>
+
+            <div class="contact-form-area">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="field-login email">
+                        <input type="text" id="email" name="email" required />
+                        <span>E-mail</span>
+                    </div>
+
+                    <div class="field-login password">
+                        <input type="password" id="senha" name="senha" required />
+                        <span>Senha</span>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="submit" class="submit button-background-green">
+                            Login
+                        </button>
+
+                        <button type="button" class="submit button-border-green" onclick="exibirCriarConta()">
+                            Cadastre-se
+                        </button>
+                    </div>
+
+                    <button class="button-google">
+                        <a class="a-google " href="{% provider_login_url 'google'%}?next=/">
+                            <i class="fab fa-google"><img class="img-google"
+                                    src="{% static 'images/logo-google.svg' %}"></i>
+                            Fazer login com o Google
+                        </a>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <img class="img-login" src="{% static 'images/woman-login.png' %}"></img>
+
+    </div>
+</div>
+
+<script>
+    function exibirCriarConta() {
+        location.href = "{% url 'cadastro' %}";
+    }
+</script>
+{% endblock %}

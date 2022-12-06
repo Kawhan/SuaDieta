@@ -1,0 +1,133 @@
+body {
+    background: linear-gradient( to left, rgba(66, 181, 129, 0.3) 50%, #fff 50% );
+}
+
+/*MENU-LOGIN*/
+.nav-menu {
+    background: #42b58100;
+    padding: 25px 0px;
+    margin: auto;
+    max-width: 1200px;
+}
+
+a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.container {
+    /* padding: 100px 5%;
+
+    display: flex;
+    justify-content: space-between; */
+
+    padding: 100px 0px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1200px;
+}
+
+.text h1 {
+    color: var(--color-primary);
+    font-size: 34px;
+    line-height: 45px;
+
+    margin-bottom: 30px;
+}
+
+.text p {
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--color-secundary);
+    font-weight: 400;
+
+    margin-bottom: 40px;
+}
+
+img.img-login{
+    width: 480px;
+    height: 460px;
+}
+
+/* INPUT */
+
+.field-login.password {
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.field-login.email {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.field-login span {
+    position: absolute;
+    left: 25px;
+    top: 15px;
+    pointer-events: none;
+    transition: 0.5s;
+    font-size: 18px;
+
+    color: rgba(0, 0, 0, 0.61);
+
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.field-login input {
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    display: block;
+    padding: 15px 20px;
+    width: 100%;
+
+
+    font-size: 18px;
+    line-height: 24px;
+    color: #42B581;
+    font-weight: 400;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.field-login input:focus~span,
+.field-login input:valid~span {
+    transform: translateY(-27px);
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.61); 
+    background: #fff;
+
+}
+
+.field-login input:focus,
+.field-login input:valid{  
+    outline: 1px;
+    width: 100%;
+    border-left: 5px solid #42B581;
+
+}
+
+.buttons {
+    margin-top: 50px;
+
+    display: flex;
+    gap: 30px;
+}
+
+a.button-a{
+    color: var(--color-primary);
+    text-decoration: none;
+    padding: 14px 20px;
+}
+
+a.button-a:hover {
+    color: #fff;
+    transition: 0.2s;
+}

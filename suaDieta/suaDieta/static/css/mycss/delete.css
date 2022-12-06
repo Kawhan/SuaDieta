@@ -1,0 +1,11 @@
+a.button-border-green.dialog-button-specific {
+    padding: 10px 67px;
+}
+
+.info-delete {
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    padding-bottom: 30px;
+    align-items: flex-end;
+}

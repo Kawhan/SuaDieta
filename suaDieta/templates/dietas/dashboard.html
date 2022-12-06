@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% include 'partials/_menu.html' %}
+{% include 'partials/_alerts.html' %}
+<link rel="stylesheet" href="{% static 'css/mycss/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mycss/global.css' %}" />
+
+<div class="container">
+
+
+    <div class="panel">
+
+        <div class="text">
+            <h1>Olá, {{ user.username }}!<br>É muito bom ver você novamente.</h1>
+            <p>Aqui você pode acompanhar suas dietas:</p>
+        </div>
+
+        <div class="cards">
+            {% for dieta in dietas %}
+
+            <div class="card-external">
+
+                <div class="dropdown">
+                    <a  onclick="myFunction()" class="dropclick"><img class="menu-icon dropclick"
+                            src="{% static 'images/menu-card.svg' %}"></a>
+
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="{%url 'change_dieta' dieta.id%}"  class="dropclick"><img class="dropdown-icon-edit"
+                                src="{% static 'images/edit-icon.svg' %}">
+                            
+                        </a>
+            
+
+                        <a href="{%url 'delete_dieta' dieta.id%}"  class="dropclick"><img class="dropdown-icon-trash"
+                                src="{% static 'images/trash-icon.svg' %}" ></a>
+                    </div>
+
+                </div>
+
+                <div class="card-inner">
+                    <h3>{{ dieta.nome_dieta }}</h3>
+                    <div class="with-css">
+                        <p>{{ dieta.dias_semana }}</p>
+                    </div>
+                    <img class="" src="{% static 'images/diet-img.svg' %}"></img>
+
+                    <div class="info">
+                        <div class="info-text">
+                            <p class="gram">{{ dieta.carbo }} gramas</p>
+                            <p class="kcal">{{ dieta.calorias }} kcal</p>
+                        </div>
+                        <a href="{%url 'view_dieta' dieta.id%}" class="dropclick"><img
+                            src="{% static 'images/icon-visualization.svg' %}"></a>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).on('click', ".dropclick", function () {
+        $(this).next(".dropdown-content").toggle("show");
+    });
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropclick')) {
+            $(".dropdown-content").hide(100);
+        }
+    }
+</script>
+
+{% include "partials/_paginatorProdutos.html" %}
+{% endblock %}

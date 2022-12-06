@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'partials/_menu.html' %}
+<link rel="stylesheet" href="{% static 'css/mycss/delete.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mycss/global.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mycss/home.css' %}" />
+
+
+
+<h2 style="
+    color:var(--color-primary); 
+    text-align: center;
+    margin-top: 50px;"
+    >Deseja excluir<br>sua dieta?</h2>
+
+<!-- Create a Form -->
+<form method="POST">
+    <!-- Security token by Django -->
+    {% csrf_token %}
+    <div class="cards card-popup">
+        <div class="card-inner">
+            <h3>{{ dieta.nome_dieta }}</h3>
+            <div class="with-css">
+                <p>{{ dieta.dias_semana }}</p>
+            </div>
+            <img class="" src="{% static 'images/diet-img.svg' %}"></img>
+
+            <div class="info-delete">
+                <div class="info-text">
+                    <p class="gram">{{ dieta.carbo }} gramas</p>
+                    <p class="kcal">{{ dieta.calorias }} kcal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons-dialog">
+        <input class="button-background-green dialog-button-specific" type="submit" value="Sim" />
+        <a class="button-border-green dialog-button-specific" href="{% url 'minhas_receitas' %}">Não</a>
+    </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Preloader -->
+
+{% include 'partials/_alerts.html' %}
+
+<!-- ##### Contact Form Area Start ##### -->
+<link rel="stylesheet" href="{% static 'css/mycss/login.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mycss/global.css' %}" />
+
+<header>
+    <nav class="nav-menu">
+        <img class="logo" src="{% static 'images/logo-menu-login.svg' %}"></img>
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a class="text-menu" href="{% url 'index' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="text-menu" href="{% url 'minhas_receitas'%}">Minhas Dietas</a></li>
+            <li><a class="text-menu" href="{% url 'logout' %}">Sair</a></li>
+            {% endif %}
+
+            {% if not user.is_authenticated %}
+            <li><a class="text-menu" href="{% url 'minhas_receitas'%}">Minhas Dietas</a></li>
+            <li><a class="text-menu" href="{% url 'login' %}">Fazer Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+
+<div class="contact-area section-padding-0-80">
+    <div class="container">
+        <div class="panel-login">
+
+            <div class="text">
+                <h1>Controle sua dieta e<br>alcançe os melhores resultado</h1>
+                <p>Bem-vindo(a) novamente. Por favor, faça login na sua conta.</p>
+            </div>
+
+            <div class="contact-form-area">
+                <form action="{% url 'cadastro' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="field-login email">
+                        <input type="text" id="nome" name="nome" required />
+                        <span>Nome completo</span>
+                    </div>
+                    <div class="field-login email">
+                        <input type="text" id="email" name="email" required />
+                        <span>E-mail</span>
+                    </div>
+
+                    <div class="field-login password">
+                        <input type="password" id="senha" name="password" required />
+                        <span>Senha</span>
+                    </div>
+
+                    <div class="field-login password">
+                        <input type="password"  name="password2"  required/>
+                        <span>Digite sua senha mais uma vez</span>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="submit" class="submit button-background-green">
+                            Criar sua conta
+                        </button>
+
+                        <button type="button" class="submit button-border-green">
+                            <a  class="button-a" href="{% url 'login' %}">Já tenho contra</a>
+                        </button>
+
+                        
+                    </div>
+            </div>
+
+            </form>
+        </div>
+
+        <img class="img-login" src="{% static 'images/woman-login.png' %}"></img>
+
+    </div>
+</div> 
+
+
+<!-- 
+<div class="contact-area section-padding-0-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>Criar conta</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="contact-form-area">
+                    <form action="{% url 'cadastro' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="nome_receita"><b>Nome completo</b></label>
+                                <input type="text" class="form-control" name="nome" placeholder="Ex.:Guilherme Lima" required>
+                            </div>
+                            <div class="col-12 col-lg-12">
+                                <label for="email"><b>Email</b></label>
+                                <input type="email" class="form-control" name="email" placeholder="Ex.: guilherme@receitas.com" required>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="password"><b>Senha</b></label>
+                                <input type="password" class="form-control" name="password" placeholder="Digite sua senha" required>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="password2"><b>Confirmação de senha</b></label>
+                                <input type="password" class="form-control" name="password2" placeholder="Digite sua senha mais uma vez" required>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn btn-success mt-2" type="submit">Criar sua conta</button>
+                            </div>
+                            <div>
+                                <a class="btn btn-primary" href="{% url 'login' %}" role="button">Já tenho contra</a>
+                            </div>
+                           
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+{% endblock %}
